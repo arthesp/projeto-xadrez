@@ -1,4 +1,0 @@
-enum Cor {
-  BRANCO,
-  PRETO
-}
