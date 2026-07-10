@@ -1,18 +1,18 @@
 package tabuleiro;
 
 import java.util.ArrayList;
+import chessUtil.Cor;
 
 public class Tabuleiro {
-  ArrayList<Celula> casas;
+  ArrayList<Celula> casas = new ArrayList<>();
 
   public Tabuleiro() {
-    casas = new ArrayList<Celula>();
-    String[8] coluna = {"A", "B", "C", "D", "E", "F", "G", "H"};
+    String[] files = {"A", "B", "C", "D", "E", "F", "G", "H"};
 
-    for(int i = 8; i >= 0; i--)
-      for(int j = 0; j < 8; j++) {
-	Cor corDeCasa = (j+i%2) ? Cor.BRANCO : Cor.PRETO;
-	casas.add(new Celula(corDeCasa, i+coluna[j]));
+    for(int i = 8; i > 0; i--)
+      for(int j = 0; j <= 7; j++) {
+	Cor corDeCasa = ((j+i)%2) ? Cor.BRANCO : Cor.PRETO;
+	casas.add(new Celula(corDeCasa, i+files[j]));
       }
     }
   } 
