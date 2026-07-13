@@ -1,24 +1,24 @@
 package tabuleiro;
 
-import chessUtil.Cor;
+import chessUtil.*;
 import pecas.Peca;
 
 public class Celula {
-  private Cor cor;
-  private char[] coordenada = new char[2];
+  private final Cor cor;
+  private final Coordenada coordenada;
   private Peca ocupada;
 
-  public Celula(Cor cor, char[] coordenada) {
-	  Celula(cor, coordenada, null);
+  public Celula(Cor cor, Coordenada coordenada) {
+	  this(cor, coordenada, null);
   }
 
-  public Celula(Cor cor, char[] coordenada, Peca ocupada) {
-	if (coordenada.length != 2)
-		throw new IllegalArgumentException
-            ("coordenada deve conter apenas 'rank' e 'file' ");
-
+  public Celula(Cor cor, Coordenada coordenada, Peca ocupada) {
     this.cor = cor;
     this.coordenada = coordenada;
-    ocupada = ocupada;
+	this.ocupada = ocupada;
+  }
+
+  public String toString() {
+	  return coordenada + ":" + cor;
   }
 }

@@ -1,16 +1,19 @@
 package pecas;
 
-import chessUtil.Cor;
+import chessUtil.*;
 import tabuleiro.Celula;
+import estrategias.EstrategiaMovimento;
 
 public abstract class Peca {
-  private Cor cor;
-  private Celula quadrado;
+  private final Cor cor;
+  private final EstrategiaMovimento estrategiaMovimento;
+  private Coordenada coordenada;
 
+  protected Peca(Cor cor, Coordenada coordenada_inicial, EstrategiaMovimento estrategiaMovimento) {
 
-  public Peca(Cor cor, char[] coordenada_inicial) {
     this.cor = cor;
-	this.quadrado.coordenada = coordenada_inicial;
+	this.coordenada = coordenada_inicial;
+	this.estrategiaMovimento = estrategiaMovimento;
   }
 
   public abstract boolean mover(Celula destino);
