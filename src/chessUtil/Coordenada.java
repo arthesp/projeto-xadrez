@@ -1,12 +1,20 @@
 package chessUtil;
 
-public class Coordenada {
-	private final int rank;
+public final class Coordenada {
 	private final char file;
+	private final int rank;
 
-	public Coordenada(int rank, char file) {
+	public Coordenada(char file, int rank) {
 		this.rank = rank;
 		this.file = file;
+	}
+
+	public int getRank() {
+		return rank;
+	}
+
+	public char getFile() {
+		return file;
 	}
 
 	public String toString() {

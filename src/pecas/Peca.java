@@ -5,20 +5,19 @@ import tabuleiro.Celula;
 import estrategias.EstrategiaMovimento;
 
 public abstract class Peca {
-  private final Cor cor;
-  private final EstrategiaMovimento estrategiaMovimento;
-  private Coordenada coordenada;
+	protected final Cor cor;
+	protected final EstrategiaMovimento estrategiaMovimento;
+	protected Coordenada coordenada;
 
-  protected Peca(Cor cor, Coordenada coordenada_inicial, EstrategiaMovimento estrategiaMovimento) {
+	protected Peca(Cor cor, Coordenada coordenada_inicial, EstrategiaMovimento estrategiaMovimento) {
+		this.cor = cor;
+		this.coordenada = coordenada_inicial;
+		this.estrategiaMovimento = estrategiaMovimento;
+	}
 
-    this.cor = cor;
-	this.coordenada = coordenada_inicial;
-	this.estrategiaMovimento = estrategiaMovimento;
-  }
+	abstract boolean mover(Coordenada destino);
 
-  public abstract boolean mover(Celula destino);
-
-  public Cor getCor() {
-    return cor;
-  }
+	public Coordenada getCoordenada() {
+		return coordenada;
+	}
 }

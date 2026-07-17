@@ -1,12 +1,17 @@
 package estrategias;
 
+import java.util.HashSet;
+import chessUtil.Coordenada;
+
 public class EstrategiaPeao implements EstrategiaMovimento {
-  public boolean validarMovimento(Peao peao, Celula movimento) {
+	public boolean validarMovimento(Cor cor, Coordenada coordenada, boolean primeiroMovimento, Coordenada movimento) {
+		int multiplicador = (cor == Cor.BRANCO) ? 1 : -1;
+		HashSet<Coordenada> movimentosValidos = new HashSet<>();
 
-	  if (peao.primeiroMovimento) {
-		  peao.coordenada[]
+		if (primeiroMovimento) {
+			
+		}
 
-
-		peao.primeiroMovimento = false;
-	  }
+		return movimentosValidos.contains(movimento);
+	}
 }
