@@ -1,6 +1,5 @@
 package estrategias;
 
 public interface EstrategiaMovimento {
-	public boolean validarMovimento();
-	public boolean consultaTabuleiro();
+	public boolean validarMovimento(pecas.Peca, chessUtil.Movimento movimento, tabuleiro.Tabuleiro tabuleiro);
 }

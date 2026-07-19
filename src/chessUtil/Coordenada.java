@@ -17,6 +17,10 @@ public final class Coordenada {
 		return file;
 	}
 
+	public int getFileIndex() {
+		return (int) file - 'a';
+	}
+
 	public String toString() {
 		return "" + file + rank;
 	}

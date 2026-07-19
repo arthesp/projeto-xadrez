@@ -4,14 +4,21 @@ import java.util.HashSet;
 import chessUtil.Coordenada;
 
 public class EstrategiaPeao implements EstrategiaMovimento {
-	public boolean validarMovimento(Cor cor, Coordenada coordenada, boolean primeiroMovimento, Coordenada movimento) {
-		int multiplicador = (cor == Cor.BRANCO) ? 1 : -1;
+	@Override
+	public boolean validarMovimento(pecas.Peao peao, Movimento movimento, tabuleiro.Tabuleiro tabuleiro) {
+		int multiplicador = peao.getDirecao();
+		Coordenada origem = movimento.origem();
 		HashSet<Coordenada> movimentosValidos = new HashSet<>();
 
-		if (primeiroMovimento) {
+		Peca ocupacao = tabuleiro.consultarCelula(new Coordenada(origem.getFile(), origem.getRank() + multiplicador));
+		if(ocupacao != null) {
+		if (peao.podeMoverDuasCasas()) {
 			
 		}
 
-		return movimentosValidos.contains(movimento);
+		} else
+			throw new IllegalArgumentException("peão ["+peao+"], em ("+origem+"), está interrompido em ("++);
+
+		return movimentosValidos.contains(movimento.destino());
 	}
 }

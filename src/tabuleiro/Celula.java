@@ -6,7 +6,7 @@ import pecas.Peca;
 public final class Celula {
 	private final Cor cor;
 	private final Coordenada coordenada;
-	private Peca ocupada;
+	protected Peca ocupada;
 
 	public Celula(Cor cor, Coordenada coordenada) {
 		this(cor, coordenada, null);
@@ -19,10 +19,9 @@ public final class Celula {
 	}
 
 	public String toString() {
-		return coordenada + ":" + cor;
-	}
-
-	public Peca getOcupada() {
-		return ocupada;
+		if (ocupada != null)
+			return coordenada + ":" + cor + ":" + ocupada;
+		else
+			return coordenada + ":" + cor;
 	}
 }

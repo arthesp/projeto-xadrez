@@ -1,21 +1,32 @@
+package pecas;
+
 import chessUtil.*;
-import estrategias.EstrategiaMovimento;
 import estrategias.EstrategiaPeao;
 
 public class Peao extends Peca {
 	private boolean primeiroMovimento = true;
-	// private char promocao = 0;
 
 	public Peao(Cor cor, Coordenada coordenada_inicial) {
 		super(cor, coordenada_inicial, new EstrategiaPeao());
 	}
 
 	@Override
-	public boolean mover(Coordenada destino) {
-		boolean result = estrategiaMovimento.validarMovimento(cor, this.coordenada, this.primeiroMovimento, destino);
-		if (result && this.primeiroMovimento)
-			this.primeiroMovimento = false;
+	public boolean processarMovimento(Movimento movimento, tabuleiro.Tabuleiro tabuleiro) {
+		boolean result = estrategiaMovimento.validarMovimento(movimento, tabuleiro);
+		if (result) {
+			if (this.primeiroMovimento)
+				this.primeiroMovimento = false;
+			coordenada = movimento.destino();
+		}
 
 		return result;
+	}
+
+	public boolean podeMoverDuasCasas() {
+		return primeiroMovimento;
+	}
+
+	public int getDirecao() {
+		return (cor == Cor.BRANCO) ? 1 : -1;
 	}
 }
