@@ -1,24 +1,30 @@
 package estrategias;
 
-import java.util.HashSet;
 import chessUtil.Coordenada;
 
 public class EstrategiaPeao implements EstrategiaMovimento {
 	@Override
-	public boolean validarMovimento(pecas.Peao peao, Movimento movimento, tabuleiro.Tabuleiro tabuleiro) {
+	public boolean validarMovimento(pecas.Peao peao, Movimento movimento,
+			tabuleiro.Tabuleiro tabuleiro) {
+
 		int multiplicador = peao.getDirecao();
-		Coordenada origem = movimento.origem();
-		HashSet<Coordenada> movimentosValidos = new HashSet<>();
+		Coordenada origem = movimento.origem(), destino = movimento.destino();
+		char origem_coluna = origem.getFile(); int origem_linha = origem.getRank();
 
-		Peca ocupacao = tabuleiro.consultarCelula(new Coordenada(origem.getFile(), origem.getRank() + multiplicador));
-		if(ocupacao != null) {
-		if (peao.podeMoverDuasCasas()) {
-			
-		}
+		Coordenada frente = new Coordenada(origem_coluna, origem_linha + multiplicador),
+			   salto = new Coordenada(origem_coluna, origem_linha + multiplicador * 2);
 
-		} else
-			throw new IllegalArgumentException("peão ["+peao+"], em ("+origem+"), está interrompido em ("++);
+		Coordenada diagonal_esquerda = new Coordenada((char)(origem_coluna - multiplicador), origem_linha + multiplicador),
+			   diagonal_direita = new Coordenada((char)(origem_coluna + multiplicador), origem_linha + multiplicador);
+		
+		if (destino.equals(frente)) {}
+		else if (destino.equals(salto)) {}
+		else if (destino.equals(diagonal_esquerda)) {}
+		else if (destino.equals(diagonal_direita)) {}
+		else
+			throw new IllegalArgumentException("Movimento inválido: " + destino);
 
-		return movimentosValidos.contains(movimento.destino());
+
+		return false;
 	}
 }

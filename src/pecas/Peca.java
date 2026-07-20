@@ -18,7 +18,7 @@ public abstract class Peca {
 		promovida = false;
 	}
 
-	abstract boolean processarMovimento(Movimento movimento, Tabuleiro tabuleiro);
+	public abstract boolean processarMovimento(Movimento movimento, Tabuleiro tabuleiro);
 
 	public Coordenada getCoordenada() {
 		return coordenada;

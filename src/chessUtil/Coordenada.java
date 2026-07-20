@@ -3,8 +3,13 @@ package chessUtil;
 public final class Coordenada {
 	private final char file;
 	private final int rank;
-
+		
 	public Coordenada(char file, int rank) {
+		if(file > 'h' || file < 'a')
+			throw new IllegalArgumentException("coluna inválida: " + file);
+		if(rank > 8 || rank < 1)
+			throw new IllegalArgumentException("linha inválida: " + rank);
+
 		this.rank = rank;
 		this.file = file;
 	}

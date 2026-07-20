@@ -7,13 +7,11 @@ public class Tabuleiro {
 	private final Celula[][] casas = new Celula[8][8];
 
 	public Tabuleiro() {
-		char[] files = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
-
 		Cor corDeCasa;
 		for (int rank = 0; rank < 8; rank++)
 			for (int file = 0; file < 8; file++) {
 				corDeCasa = ((file + rank) % 2 == 0) ? Cor.BRANCO : Cor.PRETO;
-				casas[rank][file] = new Celula(corDeCasa, new Coordenada(files[file], 8 - rank));
+				casas[rank][file] = new Celula(corDeCasa, new Coordenada((char)('a' + file), 8 - rank));
 			}
 	}
 
@@ -21,9 +19,9 @@ public class Tabuleiro {
 		Coordenada origem = movimento.origem();
 		Coordenada destino = movimento.destino();
 
-		Peca peca = consultarCelula(origem);
+		pecas.Peca peca = consultarCelula(origem);
 		if (peca == null)
-			throw new ClassNotFoundException("Origem [" + origem + "] escolhida não contém nenhuma peça válida");
+			throw new IllegalArgumentException("Origem [" + origem + "] escolhida não contém nenhuma peça válida");
 		else {
 			try {
 				if (peca.processarMovimento(movimento, this)) {
@@ -36,7 +34,7 @@ public class Tabuleiro {
 		}
 	}
 
-	public Peca consultarCelula(Coordenada coordenada) {
+	public pecas.Peca consultarCelula(Coordenada coordenada) {
 		return casas[coordenada.getFileIndex()][coordenada.getRank()].ocupada;
 	}
 
