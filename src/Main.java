@@ -1,10 +1,6 @@
-import pecas.*;
-import chessUtil.*;
-import tabuleiro.Tabuleiro;
-
 class Main {
 	public static void main(String[] args) {
-		Tabuleiro jogo = new Tabuleiro();
+		tabuleiro.Tabuleiro jogo = new tabuleiro.Tabuleiro();
 
 		System.out.println(jogo);
 

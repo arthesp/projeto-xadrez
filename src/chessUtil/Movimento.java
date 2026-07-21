@@ -1,4 +1,4 @@
 package chessUtil;
 
-public record Movimento(Coordenada origem, Coordenada destino) {
+public record Movimento(chessUtil.Coordenada origem, chessUtil.Coordenada destino) {
 }
