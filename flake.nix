@@ -15,27 +15,22 @@
     extra-substituters = "https://devenv.cachix.org";
   };
 
-  outputs = { self, nixpkgs, devenv, systems, ... } @ inputs:
-    let
-      forEachSystem = nixpkgs.lib.genAttrs (import systems);
-    in
-    {
-      devShells = forEachSystem
-        (system:
-          let
-            pkgs = nixpkgs.legacyPackages.${system};
-          in
-          {
-            default = devenv.lib.mkShell {
-              inherit inputs pkgs;
-              modules = [
-		{
-		  languages.java.enable = true;
-		}
-              ];
-
-            };
-          }
-	);
+  outputs = {
+    self,
+    nixpkgs,
+    devenv,
+    ...
+  } @ inputs: let
+    system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
+  in {
+    devShells.${system}.default = devenv.lib.mkShell {
+      inherit inputs pkgs;
+      modules = [
+        {
+          languages.java.enable = true;
+        }
+      ];
     };
+  };
 }
